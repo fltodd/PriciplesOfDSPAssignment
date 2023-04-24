@@ -1,0 +1,4 @@
+fs = 44100;
+
+baseSine = sin(linspace(0, 2*pi*freq*1, Fs*1));
+harmSine = sin
