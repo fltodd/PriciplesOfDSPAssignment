@@ -76,8 +76,8 @@ view(0,90) %rotate to view as 2d
 shading interp %enable smooth shading
 
 %format axis
-xlabel('Time/Seconds')
-ylabel('Frequency/Hertz')
+xlabel('Time / Seconds')
+ylabel('Frequency / Hertz')
 axis([0 max(t) 0 fMax]);
 set(gca,'YScale', p.Results.yScale);
 
@@ -85,5 +85,10 @@ set(gca,'YScale', p.Results.yScale);
 colormap(p.Results.colormap);
 c = colorbar;
 ylabel(c, 'Magnitude/dB')
+
+%add info
+subtitle("f_s: " + num2str(fs) + blanks(5) +... 
+    "Window Size: " + num2str(frameSize) + blanks(5) +...
+    "Overlap: " + num2str(overlap*100) + "%");
 end
 
