@@ -11,9 +11,14 @@ padding = zeros(1, (length(baseSine)-length(harmSine))/2 + 1);
 signal = baseSine + cat(2, padding, harmSine, padding(1:length(padding)-2));
 
 window = hannWindow(windowSize, windowSize);
+smallerWindow = hannWindow(windowSize/2, windowSize/2);
 
 figure
-spectrogramPSD(signal, fs, window, freq*3, -60, 0, yScale='lin');
-
-figure
-spectrogramPSD(signal, fs, window, freq*3, -60, 0.5, yScale='lin');
+subplot(1, 3, 1);
+spectrogramPSD(signal, fs, window, freq*3, -20, 0, yScale='lin');
+subplot(1, 3, 2);
+spectrogramPSD(signal, fs, window, freq*3, -20, 0.5, yScale='lin');
+subplot(1, 3, 3);
+spectrogramPSD(signal, fs, smallerWindow, freq*3, -20, 0, yScale='lin');
+set(gcf, "Position", [100, 100, 2000, 500]);
+saveas(gca, "./exports/temporalResolution.png");
